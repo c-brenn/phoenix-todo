@@ -1,16 +1,12 @@
 <section id="todo-list">
   <ul>
+    <%= for todo <- @todos do %>
     <li>
       <div class="item">
-        <a href="http://cheese.com">Compilers</a>
-        <span>24/12/15</span>
+        <a href="<%= todo.url %>"><%= todo.description %></a>
+        <span><%= todo.due_date %></span>
       </div>
     </li>
-    <li>
-      <div class="item">
-        <a href="http://cheese.com">Compilers</a>
-        <span>24/12/15</span>
-      </div>
-    </li>
+  <% end %>
   </ul>
 </section>
