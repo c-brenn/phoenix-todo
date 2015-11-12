@@ -14,7 +14,7 @@ defmodule CsTodo.Router do
   end
 
   pipeline :auth do
-    plug BasicAuth, realm: "admin", username: System.get_env("ADMIN_USERNAME"), password: System.get_env("ADMIN_PASSWORD")
+    plug BasicAuth, use_config: :cs_todo
   end
 
   scope "/", CsTodo do

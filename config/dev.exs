@@ -14,6 +14,10 @@ config :cs_todo, CsTodo.Endpoint,
   check_origin: false,
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin"]]
 
+config :cs_todo, realm: "Admin Area",
+               username: System.get_env("ADMIN_USERNAME"),
+               password: System.get_env("ADMIN_PASSWORD")
+
 # Watch static and templates for browser reloading.
 config :cs_todo, CsTodo.Endpoint,
   live_reload: [
