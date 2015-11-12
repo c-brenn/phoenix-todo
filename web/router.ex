@@ -13,10 +13,21 @@ defmodule CsTodo.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug BasicAuth, realm: "admin", username: System.get_env("ADMIN_USERNAME"), password: System.get_env("ADMIN_PASSWORD")
+  end
+
   scope "/", CsTodo do
     pipe_through :browser # Use the default browser stack
 
     get "/", TodoController, :index
+  end
+
+  scope "/admin", CsTodo do
+    pipe_through [ :browser, :auth ]
+
+    get "/new", TodoController, :new
+    post "/create", TodoController, :create
   end
 
   # Other scopes may use custom stacks.

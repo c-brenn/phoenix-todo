@@ -1,0 +1,14 @@
+<%= form_for @changeset, todo_path(@conn, :create), fn f -> %>
+<div class="input-container">
+  <label>Description</label>
+  <%= text_input f, :description %>
+  <br>
+  <label>URL</label>
+  <%= text_input f, :url %>
+  <br>
+  <label>Due</label>
+  <%= date_select f, :due_date %>
+  <br>
+  <%= submit "submit" %>
+</div>
+<% end %>
